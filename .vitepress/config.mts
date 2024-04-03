@@ -11,7 +11,7 @@ export default defineConfig({
 
     nav: [
       { text: '文档', link: '/' },
-      { text: '样例', link: '/getting-started/#demo' }
+      { text: '样例', link: 'https://nyacap.com' }
     ],
 
     sidebar: [

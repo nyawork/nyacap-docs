@@ -1,4 +1,4 @@
-# Widget
+# Widget <Badge type="tip" text="v0.2.2" vertical="top" />
 
 ::: warning 早期开发阶段
 
@@ -8,4 +8,56 @@
 
 :::
 
-TODO
+## 发布渠道
+
+Widget 有三种发布渠道：
+
+1. 使用 npmjs 发布稳定版
+2. 使用 GitHub Pages 发布稳定版
+3. 使用 CloudFlare Pages 发布测试与稳定版
+
+其中，为了方便在浏览器环境下直接引入使用，我们对使用 GitHub Pages 发布的稳定版做了一些小小的改进，将 `.umd.cjs` 文件名重命名为 `.umd.js` ，以避免 `.cjs` 后缀名被指定 MIME 类型为 `application/node` 使部分浏览器拒绝加载的情况出现。
+
+## 使用方法
+
+为了方便用户的使用，我们提供了类似 reCaptcha 的封装：可以在代码加载完成后使用 `window.nyacap` 来访问到它。
+
+纯 HTML 项目的使用方法可以参考 [项目首页] 的用法。 React 和 Vue 等现代前端工具构建的项目也可以这样使用，以避免在构建时引入额外的依赖对项目体积造成影响。
+
+[项目首页]: https://nya.codes/nyawork/nyacap/home/-/blob/main/index.html#L30-47
+
+### 功能函数
+
+目前的函数支持如下：
+
+| 函数        | 格式                                     | 支持状态           | 功能           |
+| ----------- | ---------------------------------------- | ------------------ | -------------- |
+| render      | (el: HTMLElement, op: Options) => string | :white_check_mark: | 渲染验证码     |
+| remove      | (id?: string) => void                    | :white_check_mark: | 移除验证码     |
+| execute     |                                          | :no_entry_sign:    |                |
+| reset       | (id?: string) => void                    | :construction:     | 重置验证码状态 |
+| getResponse | (id?: string) => string                  | :construction:     | 获得验证码响应 |
+
+#### render
+
+render 函数需要传入两个参数： **待挂载验证码的元素** 和 **验证码选项** 。其中验证码选项为这些：
+
+| 选项             | 类型                  | 必需               | 含义                        |
+| ---------------- | --------------------- | ------------------ | --------------------------- |
+| sitekey          | string                | :heavy_check_mark: | 验证码的站点 key            |
+| instance         | string                |                    | 验证码的服务器 Instance URL |
+| theme            | "light" \| "dark"     |                    | 验证码的颜色主题，目前没用  |
+| callback         | (key: string) => void |                    | 验证码验证成功后的回调函数  |
+| expired-callback | () => void            |                    | 验证码结果超时后的回调函数  |
+| error-callback   | () => void            |                    | 验证码出现错误时的回调函数  |
+
+支持用两种方式配置 sitekey ：
+
+1. 使用形如 `https://mini.nyacap.com/widget?sitekey=demo` 这样的方式同时配置 Instance URL 和 Site Key （目前这个路径下不包含任何内容，但未来可能会使用，推荐您遵循这种格式）
+2. 分别配置 Instance URL 和 Site Key （其中 Instance URL 为 Origin 格式，即形如 `https://mini.nyacap.com` ）。
+
+render 函数会返回一个 string 值来代表验证码的 ID ，可以使用这个 ID 配合其他函数来管理对应的验证码。
+
+#### remove
+
+remove 函数可以用于移除掉一个验证码。

@@ -12,6 +12,9 @@ hero:
     - theme: alt
       text: 查看组件
       link: /components/
+  image:
+    src: /assets/256x.png
+    alt: NyaCap
 
 features:
   - title: 开源免费
@@ -19,9 +22,9 @@ features:
   - title: 自部署
     details: 您可以部署自己的实例，避免中心化验证服务器失效，或是在内部环境使用时充分顾及隐私
   - title: 行为验证
-    details: 通过在图片上选字来验证，搭配一般的 PoW 验证使用效果更佳*
+    details: 通过在图片上选字来验证，搭配其他的 PoW 验证码解决方案使用效果更佳*
 ---
 
 
 ---
-*: 未来可能也会加入其他验证模式的支持
+*: 未来可能也会加入其他验证模式（如 PoW 前置或滑动拼图等）的支持
