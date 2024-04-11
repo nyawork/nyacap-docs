@@ -2,7 +2,7 @@
 
 ::: warning 早期开发阶段
 
-由于 `Widget` 仍处于早期开发阶段，我们不推荐您在生产环境单独使用它。如果有可能的话，最好能配合其他相对较为成熟的验证码解决方案（如 mCaptcha ）一起使用。
+由于 `Widget` 仍处于早期开发阶段，我们不推荐您在生产环境单独使用它。如果有可能的话，最好能配合其他相对较为成熟的验证码解决方案一起使用。
 
 我们无法保证相关的 API 接口稳定性，未来可能会随着相关开发工作的进展出现一些破坏性的改动，请注意跟进相关的更新。
 
@@ -10,17 +10,42 @@
 
 ## 发布渠道
 
-Widget 有三种发布渠道：
+Widget 有以下发布渠道：
 
-1. 使用 npmjs 发布稳定版
-2. 使用 GitHub Pages 发布稳定版
-3. 使用 CloudFlare Pages 发布测试与稳定版
+| 发布渠道         | 地址                            | 版本                        | 使用环境 | 备注 |
+| ---------------- | ------------------------------- | --------------------------- | -------- | ---- |
+| npmjs            | @nyacap/widget                  | :label: tag 发布            | Node.js  |      |
+| GitHub Pages     | w.nyacap.com                    | :label: tag 发布            | 浏览器   | *    |
+| Cloudflare Pages | nyacap-widget.pages.dev         | :thumbsup: main 分支        | 浏览器   | *    |
+| Cloudflare Pages | develop.nyacap-widget.pages.dev | :construction: develop 分支 | 浏览器   | *    |
 
-其中，为了方便在浏览器环境下直接引入使用，我们对使用 GitHub Pages 发布的稳定版做了一些小小的改进，将 `.umd.cjs` 文件名重命名为 `.umd.js` ，以避免 `.cjs` 后缀名被指定 MIME 类型为 `application/node` 使部分浏览器拒绝加载的情况出现。
+::: tip \*备注
 
-## 使用方法
+为了方便在浏览器环境下直接引入使用，我们对面向浏览器环境使用的版本做了一些小小的改进，将 `.umd.cjs` 文件名重命名为 `.umd.js` ，以避免 `.cjs` 后缀名被指定 MIME 类型为 `application/node` 使部分浏览器出现拒绝加载的情况。
 
-为了方便用户的使用，我们提供了类似 reCaptcha 的封装：可以在代码加载完成后使用 `window.nyacap` 来访问到它。
+:::
+
+## 使用方法（浏览器环境）
+
+首先加载代码。目前我们主要使用的代码文件是 `widget.umd.js` ，加载路径格式是这样的：
+
+```html
+<script src="https://<发布渠道地址>/widget.umd.js"></script>
+```
+
+例如，如果想要使用 `tag 发布` 的版本，我们可以使用 `w.nyacap.com` 。就像这样：
+
+```html
+<script src="https://w.nyacap.com/widget.umd.js"></script>
+```
+
+::: tip ES Module 模式
+
+Vite 另外也会打包一个 ES Module 模式的代码 `widget.js` ，暂时还不知道怎么用。此处的文档以 CommonJS 的为准。
+
+:::
+
+为了方便理解和使用，我们提供了类似 reCaptcha 的封装：可以在代码加载完成后使用 `window.nyacap` 来访问到它。
 
 纯 HTML 项目的使用方法可以参考 [项目首页] 的用法。 React 和 Vue 等现代前端工具构建的项目也可以这样使用，以避免在构建时引入额外的依赖对项目体积造成影响。
 
