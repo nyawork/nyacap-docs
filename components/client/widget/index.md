@@ -63,15 +63,23 @@ Vite 另外也会打包一个 ES Module 模式的代码 `widget.js` ，暂时还
 
 目前的函数支持如下：
 
-| 函数        | 格式                                     | 支持状态           | 功能           |
-| ----------- | ---------------------------------------- | ------------------ | -------------- |
-| render      | (el: HTMLElement, op: Options) => string | :white_check_mark: | 渲染验证码     |
-| remove      | (id?: string) => void                    | :white_check_mark: | 移除验证码     |
-| execute     |                                          | :no_entry_sign:    |                |
-| reset       | (id?: string) => void                    | :construction:     | 重置验证码状态 |
-| getResponse | (id?: string) => string                  | :construction:     | 获得验证码响应 |
+| 函数        | 格式                                   | 支持状态           | 功能           |
+| ----------- | -------------------------------------- | ------------------ | -------------- |
+| render      | (el: HTMLElement, op: Options) => void | :white_check_mark: | 渲染验证码     |
+| remove      | (id?: string) => void                  | :no_entry_sign:    | 移除验证码     |
+| execute     |                                        | :no_entry_sign:    |                |
+| reset       | (id?: string) => void                  | :no_entry_sign:    | 重置验证码状态 |
+| getResponse | (id?: string) => string                | :no_entry_sign:    | 获得验证码响应 |
+
+如果您有其他功能的需求，欢迎随时开启一个 PR 来实现对应的功能。
 
 #### render
+
+::: warning 函数定义
+
+这个函数和一般的验证码定义不同，它不会返回验证码 id 字符串。
+
+:::
 
 render 函数需要传入两个参数： **待挂载验证码的元素** 和 **验证码选项** 。其中验证码选项为这些：
 
@@ -88,9 +96,3 @@ render 函数需要传入两个参数： **待挂载验证码的元素** 和 **�
 
 1. 使用形如 `https://mini.nyacap.com/widget?sitekey=demo` 这样的方式同时配置 Instance URL 和 Site Key （目前这个路径下不包含任何内容，但未来可能会使用，推荐您遵循这种格式）
 2. 分别配置 Instance URL 和 Site Key （其中 Instance URL 为 Origin 格式，即形如 `https://mini.nyacap.com` ）。
-
-render 函数会返回一个 string 值来代表验证码的 ID ，可以使用这个 ID 配合其他函数来管理对应的验证码。
-
-#### remove
-
-remove 函数可以用于移除掉一个验证码。
