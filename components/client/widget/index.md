@@ -1,4 +1,4 @@
-# Widget <Badge type="tip" text="v0.2.2" vertical="top" />
+# Widget
 
 ::: warning 早期开发阶段
 

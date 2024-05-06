@@ -1,4 +1,4 @@
-# Mini 服务器 <Badge type="tip" text="v0.1.4" vertical="top" />
+# Mini 服务器
 
 ::: warning 早期开发阶段
 
