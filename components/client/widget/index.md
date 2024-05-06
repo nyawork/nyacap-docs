@@ -12,18 +12,26 @@
 
 Widget 有以下发布渠道：
 
-| 发布渠道         | 地址                            | 版本                        | 使用环境 | 备注 |
-| ---------------- | ------------------------------- | --------------------------- | -------- | ---- |
-| npmjs            | @nyacap/widget                  | :label: tag 发布            | Node.js  |      |
-| GitHub Pages     | w.nyacap.com                    | :label: tag 发布            | 浏览器   | *    |
-| Cloudflare Pages | nyacap-widget.pages.dev         | :thumbsup: main 分支        | 浏览器   | *    |
-| Cloudflare Pages | develop.nyacap-widget.pages.dev | :construction: develop 分支 | 浏览器   | *    |
+| 发布渠道         | 地址                            | 版本                        | 使用环境 |
+| ---------------- | ------------------------------- | --------------------------- | -------- |
+| npmjs            | @nyacap/widget                  | :label: tag 发布            | Node.js  |
+| GitHub Pages     | w.nyacap.com                    | :label: tag 发布            | 浏览器   |
+| Cloudflare Pages | nyacap-widget.pages.dev         | :thumbsup: main 分支        | 浏览器   |
+| Cloudflare Pages | develop.nyacap-widget.pages.dev | :construction: develop 分支 | 浏览器   |
 
 ::: tip \*备注
 
 为了方便在浏览器环境下直接引入使用，我们对面向浏览器环境使用的版本做了一些小小的改进，将 `.umd.cjs` 文件名重命名为 `.umd.js` ，以避免 `.cjs` 后缀名被指定 MIME 类型为 `application/node` 使部分浏览器出现拒绝加载的情况。
 
 :::
+
+## 预览
+
+您可以在这里预览各个对应的版本：
+
+- [tag 发布](https://nyacap.com)
+- [main 分支](https://nyacap.com/main)
+- [develop 分支](https://nyacap.com/develop)
 
 ## 使用方法（浏览器环境）
 
