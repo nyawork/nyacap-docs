@@ -43,6 +43,15 @@ export default defineConfig({
         ]
       },
       {
+        text: '实现细节',
+        items: [
+          {
+            text: '时序图',
+            link: '/flow-chart/',
+          },
+        ]
+      },
+      {
         text: '补充内容',
         items: [
           {
